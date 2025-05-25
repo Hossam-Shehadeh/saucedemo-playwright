@@ -27,5 +27,18 @@ test.describe('Sort Feature', () => {
     expect(itemNames).toEqual(sortedNames);
   });
 
+   test('Sort items from Price High to Low', async ({ page }) => {
+    const products = new ProductsPage(page);
+    await products.sortBy('hilo');
+
+    await page.locator('.inventory_item_price').first().waitFor({ state: 'visible' });
+
+    const prices = await page.$$eval('.inventory_item_price', elements =>
+      elements.map(e => parseFloat(e.textContent!.replace('$', '')))
+    );
+
+    const sortedPrices = [...prices].sort((a, b) => b - a);
+    expect(prices).toEqual(sortedPrices);
+  });
  
 });
