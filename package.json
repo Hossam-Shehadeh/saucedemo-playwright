@@ -1,0 +1,15 @@
+{
+  "name": "saucedemo-playwright",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:headed": "npx playwright test --headed",
+    "test:chromium": "npx playwright test --project=chromium",
+    "test:firefox": "npx playwright test --project=firefox"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.43.1",
+    "dotenv": "^16.0.3",
+    "typescript": "^5.3.3"
+  }
+}
